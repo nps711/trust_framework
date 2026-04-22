@@ -1,0 +1,5 @@
+com\trust\common\mq\config\MqCommonAutoConfiguration.class
+com\trust\common\mq\event\TradeEventMessage.class
+com\trust\common\mq\publisher\LoggingTradeEventPublisher.class
+com\trust\common\mq\publisher\TradeEventPublisher.class
+com\trust\common\mq\publisher\RabbitTradeEventPublisher.class

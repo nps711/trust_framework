@@ -1,0 +1,7 @@
+com\trust\common\core\api\R.class
+com\trust\common\core\api\BaseRequest.class
+com\trust\common\core\id\SnowflakeIdGenerator.class
+com\trust\common\core\error\ErrorCode.class
+com\trust\common\core\context\UserContext.class
+com\trust\common\core\context\UserContextHolder.class
+com\trust\common\core\error\BusinessException.class

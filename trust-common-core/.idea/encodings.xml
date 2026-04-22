@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/../trust-cloud-framework/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../trust-cloud-framework/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../trust-common-config-starter/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../trust-common-config-starter/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../trust-common-db-starter/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../trust-common-db-starter/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../trust-common-file-starter/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../trust-common-file-starter/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../trust-common-log-starter/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../trust-common-log-starter/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../trust-common-mq-starter/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../trust-common-mq-starter/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../trust-common-redis-starter/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../trust-common-redis-starter/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../trust-common-rpc-starter/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../trust-common-rpc-starter/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../trust-common-security-starter/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../trust-common-security-starter/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../trust-common-web-starter/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../trust-common-web-starter/src/main/resources" charset="UTF-8" />
+  </component>
+</project>

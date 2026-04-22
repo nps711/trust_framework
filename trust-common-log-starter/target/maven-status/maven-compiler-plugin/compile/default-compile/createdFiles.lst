@@ -1,0 +1,3 @@
+com\trust\common\log\annotation\AuditLog.class
+com\trust\common\log\config\LogCommonAutoConfiguration.class
+com\trust\common\log\aspect\AuditLogAspect.class

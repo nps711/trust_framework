@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: trust-quant-account-service
+
+server:
+  port: 8091

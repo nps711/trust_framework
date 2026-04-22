@@ -1,0 +1,43 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.trust</groupId>
+        <artifactId>trust-cloud-framework</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../trust-cloud-framework/pom.xml</relativePath>
+    </parent>
+    <artifactId>trust-common-redis-starter</artifactId>
+
+    <properties>
+        <trust.framework.bom.version>1.0.0-SNAPSHOT</trust.framework.bom.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.trust</groupId>
+                <artifactId>trust-cloud-framework-bom</artifactId>
+                <version>${trust.framework.bom.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.trust</groupId>
+            <artifactId>trust-common-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.redisson</groupId>
+            <artifactId>redisson-spring-boot-starter</artifactId>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
+</project>

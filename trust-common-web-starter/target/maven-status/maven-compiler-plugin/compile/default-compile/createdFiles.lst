@@ -1,0 +1,3 @@
+com\trust\common\web\filter\TrustContextFilter.class
+com\trust\common\web\config\WebCommonAutoConfiguration.class
+com\trust\common\web\exception\GlobalExceptionHandler.class

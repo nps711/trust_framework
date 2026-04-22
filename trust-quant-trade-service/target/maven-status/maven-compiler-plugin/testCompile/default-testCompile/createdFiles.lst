@@ -1,0 +1,3 @@
+com\trust\quant\trade\domain\InMemoryOrderBookTest.class
+com\trust\quant\trade\integration\QuantTradeIntegrationTest.class
+com\trust\quant\trade\domain\RiskAndSettlementTest.class

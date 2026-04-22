@@ -1,0 +1,4 @@
+com\trust\quant\account\api\response\AccountInfoRes.class
+com\trust\quant\account\api\controller\QuantAccountController.class
+com\trust\quant\account\QuantAccountApplication.class
+com\trust\quant\account\api\request\AccountInfoReq.class

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/../trust-common-db-starter/pom.xml" />
+        <option value="$PROJECT_DIR$/../trust-common-file-starter/pom.xml" />
+        <option value="$PROJECT_DIR$/../trust-common-log-starter/pom.xml" />
+        <option value="$PROJECT_DIR$/../trust-common-mq-starter/pom.xml" />
+        <option value="$PROJECT_DIR$/../trust-common-redis-starter/pom.xml" />
+        <option value="$PROJECT_DIR$/../trust-common-rpc-starter/pom.xml" />
+        <option value="$PROJECT_DIR$/../trust-common-security-starter/pom.xml" />
+        <option value="$PROJECT_DIR$/../trust-common-web-starter/pom.xml" />
+        <option value="$PROJECT_DIR$/../trust-cloud-framework-bom/pom.xml" />
+        <option value="$PROJECT_DIR$/../trust-cloud-framework/pom.xml" />
+        <option value="$PROJECT_DIR$/../trust-common-config-starter/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="jdk1710" project-jdk-type="JavaSDK" />
+</project>

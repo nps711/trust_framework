@@ -1,0 +1,4 @@
+com\trust\common\redis\config\RedisCommonAutoConfiguration.class
+com\trust\common\redis\idempotency\InMemoryIdempotencyStore.class
+com\trust\common\redis\idempotency\IdempotencyStore.class
+com\trust\common\redis\idempotency\RedisIdempotencyStore.class

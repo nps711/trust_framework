@@ -1,0 +1,5 @@
+D:\codex\normal\trust-common-mq-starter\src\main\java\com\trust\common\mq\config\MqCommonAutoConfiguration.java
+D:\codex\normal\trust-common-mq-starter\src\main\java\com\trust\common\mq\event\TradeEventMessage.java
+D:\codex\normal\trust-common-mq-starter\src\main\java\com\trust\common\mq\publisher\LoggingTradeEventPublisher.java
+D:\codex\normal\trust-common-mq-starter\src\main\java\com\trust\common\mq\publisher\RabbitTradeEventPublisher.java
+D:\codex\normal\trust-common-mq-starter\src\main\java\com\trust\common\mq\publisher\TradeEventPublisher.java

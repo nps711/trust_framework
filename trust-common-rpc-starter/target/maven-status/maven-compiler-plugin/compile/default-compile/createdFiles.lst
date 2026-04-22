@@ -1,0 +1,2 @@
+com\trust\common\rpc\config\RpcCommonAutoConfiguration.class
+com\trust\common\rpc\interceptor\ContextFeignInterceptor.class
