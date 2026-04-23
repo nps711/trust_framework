@@ -3,14 +3,13 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.trust</groupId>
-        <artifactId>trust-cloud-framework</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../trust-cloud-framework/pom.xml</relativePath>
+        <artifactId>trust-cloud-parent</artifactId>
+        <version>0.0.1</version>
     </parent>
     <artifactId>trust-quant-trade-service</artifactId>
 
     <properties>
-        <trust.framework.bom.version>1.2.0-SNAPSHOT</trust.framework.bom.version>
+        <trust.framework.bom.version>0.0.1</trust.framework.bom.version>
         <springdoc.version>2.6.0</springdoc.version>
     </properties>
 
@@ -18,7 +17,7 @@
         <dependencies>
             <dependency>
                 <groupId>com.trust</groupId>
-                <artifactId>trust-cloud-framework-bom</artifactId>
+                <artifactId>trust-cloud-bom</artifactId>
                 <version>${trust.framework.bom.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
@@ -33,27 +32,27 @@
         </dependency>
         <dependency>
             <groupId>com.trust</groupId>
-            <artifactId>trust-common-web-starter</artifactId>
+            <artifactId>trust-common-web</artifactId>
         </dependency>
         <dependency>
             <groupId>com.trust</groupId>
-            <artifactId>trust-common-db-starter</artifactId>
+            <artifactId>trust-common-db</artifactId>
         </dependency>
 <!--        <dependency>-->
 <!--            <groupId>com.trust</groupId>-->
-<!--            <artifactId>trust-common-security-starter</artifactId>-->
+<!--            <artifactId>trust-common-security</artifactId>-->
 <!--        </dependency>-->
         <dependency>
             <groupId>com.trust</groupId>
-            <artifactId>trust-common-log-starter</artifactId>
+            <artifactId>trust-common-log</artifactId>
         </dependency>
         <dependency>
             <groupId>com.trust</groupId>
-            <artifactId>trust-common-config-starter</artifactId>
+            <artifactId>trust-common-config</artifactId>
         </dependency>
         <dependency>
             <groupId>com.trust</groupId>
-            <artifactId>trust-common-rpc-starter</artifactId>
+            <artifactId>trust-common-rpc</artifactId>
         </dependency>
 
         <dependency>
@@ -99,3 +98,5 @@
         </plugins>
     </build>
 </project>
+
+

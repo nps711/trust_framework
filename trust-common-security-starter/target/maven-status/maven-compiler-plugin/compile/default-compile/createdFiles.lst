@@ -1,3 +1,0 @@
-com\trust\common\security\filter\TokenAuthFilter.class
-com\trust\common\security\config\SecurityCommonAutoConfiguration.class
-com\trust\common\security\annotation\DataScope.class

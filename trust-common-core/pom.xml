@@ -3,21 +3,20 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.trust</groupId>
-        <artifactId>trust-cloud-framework</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../trust-cloud-framework/pom.xml</relativePath>
+        <artifactId>trust-cloud-parent</artifactId>
+        <version>0.0.1</version>
     </parent>
     <artifactId>trust-common-core</artifactId>
 
     <properties>
-        <trust.framework.bom.version>1.0.0-SNAPSHOT</trust.framework.bom.version>
+        <trust.framework.bom.version>0.0.1</trust.framework.bom.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>com.trust</groupId>
-                <artifactId>trust-cloud-framework-bom</artifactId>
+                <artifactId>trust-cloud-bom</artifactId>
                 <version>${trust.framework.bom.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
@@ -45,3 +44,6 @@
         </dependency>
     </dependencies>
 </project>
+
+
+

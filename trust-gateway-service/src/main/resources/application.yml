@@ -5,7 +5,7 @@ spring:
     gateway:
       routes:
         - id: quant-trade-service
-          uri: http://localhost:8081
+          uri: http://localhost:8087
           predicates:
             - Path=/quant/**
 management:
