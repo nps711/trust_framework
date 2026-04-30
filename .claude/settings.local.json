@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(C:\\\\Program Files\\\\draw.io\\\\draw.io.exe *)",
+      "Bash(\"C:\\\\Program Files\\\\draw.io\\\\draw.io.exe\" -x -f png -e -s 2 --page-index 0 -o \"E:\\\\xinke\\\\ideaws\\\\trust_framework\\\\技术中台架构图-01-基础骨架与组件配对.drawio.png\" \"E:\\\\xinke\\\\ideaws\\\\trust_framework\\\\技术中台架构图.drawio\")",
+      "Bash(\"C:\\\\Program Files\\\\draw.io\\\\draw.io.exe\" -x -f png -e -s 2 --page-index 1 -o \"E:\\\\xinke\\\\ideaws\\\\trust_framework\\\\技术中台架构图-02-Demo服务调用链路.drawio.png\" \"E:\\\\xinke\\\\ideaws\\\\trust_framework\\\\技术中台架构图.drawio\")"
+    ]
+  }
+}
