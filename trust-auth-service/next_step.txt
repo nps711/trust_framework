@@ -1,0 +1,35 @@
+下一步：trust-quant-account-service 增强（Phase 4.3）
+
+文件1：trust-quant-account-service/pom.xml
+- 添加依赖：trust-common-db、trust-common-security、trust-common-rpc、trust-common-log
+- 版本号不写（由 BOM 管理）
+
+文件2：trust-quant-account-service/src/main/resources/application.yml
+- 添加 H2 数据源配置：
+  spring:
+    datasource:
+      url: jdbc:h2:mem:accountdb;DB_CLOSE_DELAY=-1;MODE=PostgreSQL
+      driver-class-name: org.h2.Driver
+      username: sa
+      password:
+
+文件3：trust-quant-account-service/src/main/java/com/trust/quant/account/infrastructure/persistence/SchemaInitializer.java（新建）
+- @Component 类，注入 JdbcTemplate
+- @PostConstruct 方法执行 DDL：
+  CREATE TABLE IF NOT EXISTS quant_account (
+    id BIGINT PRIMARY KEY,
+    account_id VARCHAR(64) NOT NULL UNIQUE,
+    account_name VARCHAR(128),
+    account_type VARCHAR(32),
+    status VARCHAR(16),
+    available_balance DECIMAL(20,6) DEFAULT 0,
+    frozen_balance DECIMAL(20,6) DEFAULT 0,
+    create_time TIMESTAMP,
+    update_time TIMESTAMP
+  )
+- 插入种子数据 1-2 条
+
+完成后进入 Phase 5 验证：
+1. mvn clean install -DskipTests（根目录聚合工程）
+2. 各独立服务分别 mvn clean install -DskipTests
+3. 启动各服务做 API 联调

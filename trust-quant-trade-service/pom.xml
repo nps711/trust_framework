@@ -38,10 +38,10 @@
             <groupId>com.trust</groupId>
             <artifactId>trust-common-db</artifactId>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>com.trust</groupId>-->
-<!--            <artifactId>trust-common-security</artifactId>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>com.trust</groupId>
+            <artifactId>trust-common-security</artifactId>
+        </dependency>
         <dependency>
             <groupId>com.trust</groupId>
             <artifactId>trust-common-log</artifactId>

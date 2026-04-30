@@ -44,7 +44,7 @@ public class QuantTradeController {
         return R.success(applicationService.cancelOrder(req), traceId());
     }
 
-//    @DataScope(userAlias = "accountId")
+    @com.trust.common.security.annotation.DataScope(deptAlias = "dept_id")
     @PostMapping("/order/query")
     @Operation(summary = "Query orders")
     public R<List<Order>> queryOrder(@Valid @RequestBody OrderQueryReq req) {

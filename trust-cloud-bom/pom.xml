@@ -30,6 +30,10 @@
         <trust.common.redis.version>0.0.1</trust.common.redis.version>
         <trust.common.mq.version>0.0.1</trust.common.mq.version>
         <trust.common.file.version>0.0.1</trust.common.file.version>
+        <trust.quant.quotation.version>0.0.1</trust.quant.quotation.version>
+        <trust.auth.version>0.0.1</trust.auth.version>
+        <trust.file.version>0.0.1</trust.file.version>
+        <trust.audit.version>0.0.1</trust.audit.version>
     </properties>
 
     <dependencyManagement>
@@ -129,6 +133,26 @@
                 <groupId>com.trust</groupId>
                 <artifactId>trust-common-file</artifactId>
                 <version>${trust.common.file.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.trust</groupId>
+                <artifactId>trust-quant-quotation-service</artifactId>
+                <version>${trust.quant.quotation.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.trust</groupId>
+                <artifactId>trust-auth-service</artifactId>
+                <version>${trust.auth.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.trust</groupId>
+                <artifactId>trust-file-service</artifactId>
+                <version>${trust.file.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.trust</groupId>
+                <artifactId>trust-audit-service</artifactId>
+                <version>${trust.audit.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

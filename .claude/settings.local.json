@@ -2,8 +2,14 @@
   "permissions": {
     "allow": [
       "Bash(C:\\\\Program Files\\\\draw.io\\\\draw.io.exe *)",
-      "Bash(\"C:\\\\Program Files\\\\draw.io\\\\draw.io.exe\" -x -f png -e -s 2 --page-index 0 -o \"E:\\\\xinke\\\\ideaws\\\\trust_framework\\\\技术中台架构图-01-基础骨架与组件配对.drawio.png\" \"E:\\\\xinke\\\\ideaws\\\\trust_framework\\\\技术中台架构图.drawio\")",
-      "Bash(\"C:\\\\Program Files\\\\draw.io\\\\draw.io.exe\" -x -f png -e -s 2 --page-index 1 -o \"E:\\\\xinke\\\\ideaws\\\\trust_framework\\\\技术中台架构图-02-Demo服务调用链路.drawio.png\" \"E:\\\\xinke\\\\ideaws\\\\trust_framework\\\\技术中台架构图.drawio\")"
+      "Bash(mvn clean *)",
+      "Bash(curl -s -X POST http://localhost:8091/quant/account/info -H \"Content-Type: application/json\" -d '{\"accountId\":\"ACC001\"}')",
+      "Bash(mvn spring-boot:run *)",
+      "Bash(curl -s http://localhost:8087/actuator/health)",
+      "Bash(curl *)",
+      "Bash(netstat -ano)",
+      "Bash(taskkill *)",
+      "Bash(cmd *)"
     ]
   }
 }

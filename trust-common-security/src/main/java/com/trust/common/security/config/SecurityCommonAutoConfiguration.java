@@ -1,12 +1,19 @@
 package com.trust.common.security.config;
 
+import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.trust.common.core.api.R;
 import com.trust.common.core.context.UserContextHolder;
 import com.trust.common.core.error.ErrorCode;
+import com.trust.common.security.client.AuthServiceClient;
 import com.trust.common.security.filter.TokenAuthFilter;
+import com.trust.common.security.interceptor.DataScopeInterceptor;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.MediaType;
 import org.springframework.security.config.Customizer;
@@ -16,9 +23,11 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @AutoConfiguration
+@ConditionalOnClass({HttpSecurity.class, SecurityFilterChain.class})
 public class SecurityCommonAutoConfiguration {
 
     @Bean
+    @ConditionalOnProperty(prefix = "trust.security.filter", name = "enabled", havingValue = "true")
     public SecurityFilterChain securityFilterChain(HttpSecurity http, ObjectMapper objectMapper) throws Exception {
         http.csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
@@ -36,5 +45,13 @@ public class SecurityCommonAutoConfiguration {
                     ));
                 }));
         return http.build();
+    }
+
+    @Bean
+    @ConditionalOnClass(MybatisPlusInterceptor.class)
+    @ConditionalOnBean(AuthServiceClient.class)
+    @ConditionalOnMissingBean(DataScopeInterceptor.class)
+    public DataScopeInterceptor dataScopeInterceptor(AuthServiceClient authServiceClient) {
+        return new DataScopeInterceptor(authServiceClient);
     }
 }

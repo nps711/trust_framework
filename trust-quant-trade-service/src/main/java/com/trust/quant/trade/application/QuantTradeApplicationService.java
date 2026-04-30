@@ -1,5 +1,6 @@
 package com.trust.quant.trade.application;
 
+import com.trust.common.core.api.R;
 import com.trust.common.core.error.BusinessException;
 import com.trust.common.core.id.SnowflakeIdGenerator;
 import com.trust.common.log.annotation.AuditLog;
@@ -22,8 +23,11 @@ import com.trust.quant.trade.infrastructure.persistence.mapper.OrderMapper;
 import com.trust.quant.trade.infrastructure.persistence.mapper.TradeMapper;
 import com.trust.quant.trade.infrastructure.persistence.model.AccountEntity;
 import com.trust.quant.trade.infrastructure.rpc.QuantAccountClient;
+import com.trust.quant.trade.infrastructure.rpc.QuantQuotationClient;
 import com.trust.quant.trade.infrastructure.rpc.dto.AccountInfoReq;
 import com.trust.quant.trade.infrastructure.rpc.dto.AccountInfoRes;
+import com.trust.quant.trade.infrastructure.rpc.dto.LatestPriceReq;
+import com.trust.quant.trade.infrastructure.rpc.dto.LatestPriceRes;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
@@ -47,6 +51,7 @@ public class QuantTradeApplicationService {
     private final AccountMapper accountMapper;
     private final IdempotencyLogMapper idempotencyLogMapper;
     private final QuantAccountClient quantAccountClient;
+    private final QuantQuotationClient quantQuotationClient;
 
     public QuantTradeApplicationService(InMemoryOrderBook orderBook,
                                         RiskEvaluator riskEvaluator,
@@ -55,7 +60,8 @@ public class QuantTradeApplicationService {
                                         TradeMapper tradeMapper,
                                         AccountMapper accountMapper,
                                         IdempotencyLogMapper idempotencyLogMapper,
-                                        QuantAccountClient quantAccountClient) {
+                                        QuantAccountClient quantAccountClient,
+                                        QuantQuotationClient quantQuotationClient) {
         this.orderBook = orderBook;
         this.riskEvaluator = riskEvaluator;
         this.idGenerator = idGenerator;
@@ -64,6 +70,7 @@ public class QuantTradeApplicationService {
         this.accountMapper = accountMapper;
         this.idempotencyLogMapper = idempotencyLogMapper;
         this.quantAccountClient = quantAccountClient;
+        this.quantQuotationClient = quantQuotationClient;
     }
 
     @AuditLog(module = "quant-trade", action = "place-order")
@@ -71,6 +78,9 @@ public class QuantTradeApplicationService {
         if (req.getRequestId() == null || req.getRequestId().isBlank()) {
             throw new BusinessException("requestId is required for idempotency");
         }
+
+        // 查询行情价格
+        queryAndValidateMarketPrice(req.getSymbol(), req.getPrice());
 
         recordIdempotency(req.getRequestId());
         ensureAccountExists(req.getAccountId());
@@ -191,6 +201,29 @@ public class QuantTradeApplicationService {
         for (Trade trade : trades) {
             orderBook.get(trade.getBuyOrderId()).ifPresent(orderMapper::updateState);
             orderBook.get(trade.getSellOrderId()).ifPresent(orderMapper::updateState);
+        }
+    }
+
+    private void queryAndValidateMarketPrice(String symbol, BigDecimal orderPrice) {
+        try {
+            LatestPriceReq priceReq = new LatestPriceReq();
+            priceReq.setSymbol(symbol);
+            R<LatestPriceRes> priceRes = quantQuotationClient.queryLatestPrice(priceReq);
+            if (priceRes != null && priceRes.getData() != null && priceRes.getData().getTick() != null) {
+                LatestPriceRes.TickSnapshot tick = priceRes.getData().getTick();
+                log.info("market price query success, symbol={}, latestPrice={}, upLimit={}, downLimit={}",
+                        symbol, tick.getLatestPrice(), tick.getUpLimitPrice(), tick.getDownLimitPrice());
+                if (orderPrice != null && tick.getUpLimitPrice() != null && orderPrice.compareTo(tick.getUpLimitPrice()) > 0) {
+                    throw new BusinessException("order price exceeds up limit: " + tick.getUpLimitPrice());
+                }
+                if (orderPrice != null && tick.getDownLimitPrice() != null && orderPrice.compareTo(tick.getDownLimitPrice()) < 0) {
+                    throw new BusinessException("order price below down limit: " + tick.getDownLimitPrice());
+                }
+            }
+        } catch (BusinessException e) {
+            throw e;
+        } catch (Exception e) {
+            log.warn("market price query failed, symbol={}, error={}", symbol, e.getMessage());
         }
     }
 

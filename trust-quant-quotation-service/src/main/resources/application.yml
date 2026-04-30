@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: trust-quant-quotation-service
+  jackson:
+    default-property-inclusion: non_null
+
+server:
+  port: 8088
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
