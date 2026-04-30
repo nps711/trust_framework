@@ -1,7 +1,6 @@
 package com.trust.auth.api.controller;
 
 import com.trust.common.core.api.R;
-import com.trust.common.core.context.UserContextHolder;
 import com.trust.auth.api.request.LoginReq;
 import com.trust.auth.api.request.LogoutReq;
 import com.trust.auth.api.request.UserIdReq;
@@ -27,26 +26,22 @@ public class AuthController {
 
     @PostMapping("/login")
     public R<LoginRes> login(@Valid @RequestBody LoginReq req) {
-        return R.success(authApplicationService.login(req), traceId());
+        return R.success(authApplicationService.login(req));
     }
 
     @PostMapping("/logout")
     public R<Boolean> logout(@Valid @RequestBody LogoutReq req) {
         authApplicationService.logout(req.getToken());
-        return R.success(true, traceId());
+        return R.success(true);
     }
 
     @PostMapping("/user-info")
     public R<UserInfoRes> getUserInfo(@Valid @RequestBody UserIdReq req) {
-        return R.success(authApplicationService.getUserInfo(req.getUserId()), traceId());
+        return R.success(authApplicationService.getUserInfo(req.getUserId()));
     }
 
     @PostMapping("/scope/depts")
     public R<DataScopeRes> getDataScopeDepts(@Valid @RequestBody UserIdReq req) {
-        return R.success(authApplicationService.getDataScopeDepts(req), traceId());
-    }
-
-    private String traceId() {
-        return UserContextHolder.getContext() == null ? null : UserContextHolder.getContext().getTraceId();
+        return R.success(authApplicationService.getDataScopeDepts(req));
     }
 }

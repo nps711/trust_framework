@@ -1,7 +1,6 @@
 package com.trust.quant.quotation.api.controller;
 
 import com.trust.common.core.api.R;
-import com.trust.common.core.context.UserContextHolder;
 import com.trust.quant.quotation.api.request.HistoryTickReq;
 import com.trust.quant.quotation.api.request.LatestPriceReq;
 import com.trust.quant.quotation.api.request.LimitPriceReq;
@@ -25,25 +24,21 @@ public class QuotationController {
 
     @PostMapping("/latest-price")
     public R<LatestPriceRes> queryLatestPrice(@Valid @RequestBody LatestPriceReq req) {
-        return R.success(applicationService.queryLatestPrice(req), traceId());
+        return R.success(applicationService.queryLatestPrice(req));
     }
 
     @PostMapping("/limit-price")
     public R<LimitPriceRes> queryLimitPrice(@Valid @RequestBody LimitPriceReq req) {
-        return R.success(applicationService.queryLimitPrice(req), traceId());
+        return R.success(applicationService.queryLimitPrice(req));
     }
 
     @PostMapping("/history-ticks")
     public R<HistoryTickRes> queryHistoryTicks(@Valid @RequestBody HistoryTickReq req) {
-        return R.success(applicationService.queryHistoryTicks(req), traceId());
+        return R.success(applicationService.queryHistoryTicks(req));
     }
 
     @PostMapping("/symbols")
     public R<SymbolListRes> queryAllSymbols() {
-        return R.success(applicationService.queryAllSymbols(), traceId());
-    }
-
-    private String traceId() {
-        return UserContextHolder.getContext() == null ? null : UserContextHolder.getContext().getTraceId();
+        return R.success(applicationService.queryAllSymbols());
     }
 }

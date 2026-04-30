@@ -3,7 +3,6 @@ package com.trust.common.security.config;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.trust.common.core.api.R;
-import com.trust.common.core.context.UserContextHolder;
 import com.trust.common.core.error.ErrorCode;
 import com.trust.common.security.client.AuthServiceClient;
 import com.trust.common.security.filter.TokenAuthFilter;
@@ -39,9 +38,8 @@ public class SecurityCommonAutoConfiguration {
                 .exceptionHandling(exception -> exception.authenticationEntryPoint((request, response, authException) -> {
                     response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
                     response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-                    String traceId = UserContextHolder.getContext() == null ? null : UserContextHolder.getContext().getTraceId();
                     response.getWriter().write(objectMapper.writeValueAsString(
-                            R.fail(ErrorCode.UNAUTHORIZED.getCode(), ErrorCode.UNAUTHORIZED.getMsg(), traceId)
+                            R.fail(ErrorCode.UNAUTHORIZED.getCode(), ErrorCode.UNAUTHORIZED.getMsg())
                     ));
                 }));
         return http.build();

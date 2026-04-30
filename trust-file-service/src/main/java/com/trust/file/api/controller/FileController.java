@@ -1,7 +1,6 @@
 package com.trust.file.api.controller;
 
 import com.trust.common.core.api.R;
-import com.trust.common.core.context.UserContextHolder;
 import com.trust.file.api.request.FileDeleteReq;
 import com.trust.file.api.request.FileDownloadReq;
 import com.trust.file.api.request.FileUploadReq;
@@ -30,7 +29,7 @@ public class FileController {
 
     @PostMapping("/upload")
     public R<FileUploadRes> upload(@Valid @RequestBody FileUploadReq req) {
-        return R.success(fileApplicationService.upload(req), traceId());
+        return R.success(fileApplicationService.upload(req));
     }
 
     @PostMapping("/download")
@@ -45,16 +44,12 @@ public class FileController {
 
     @PostMapping("/info")
     public R<FileInfoRes> info(@Valid @RequestBody FileDownloadReq req) {
-        return R.success(fileApplicationService.getFileInfo(req.getFileId()), traceId());
+        return R.success(fileApplicationService.getFileInfo(req.getFileId()));
     }
 
     @PostMapping("/delete")
     public R<Boolean> delete(@Valid @RequestBody FileDeleteReq req) {
         fileApplicationService.delete(req);
-        return R.success(true, traceId());
-    }
-
-    private String traceId() {
-        return UserContextHolder.getContext() == null ? null : UserContextHolder.getContext().getTraceId();
+        return R.success(true);
     }
 }

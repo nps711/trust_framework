@@ -1,5 +1,7 @@
 package com.trust.common.core.api;
 
+import com.trust.common.core.context.UserContextHolder;
+
 import java.io.Serializable;
 
 public class R<T> implements Serializable {
@@ -10,6 +12,10 @@ public class R<T> implements Serializable {
     private T data;
     private String traceId;
 
+    public static <T> R<T> success(T data) {
+        return success(data, currentTraceId());
+    }
+
     public static <T> R<T> success(T data, String traceId) {
         R<T> r = new R<>();
         r.setCode(200);
@@ -19,12 +25,20 @@ public class R<T> implements Serializable {
         return r;
     }
 
+    public static <T> R<T> fail(int code, String msg) {
+        return fail(code, msg, currentTraceId());
+    }
+
     public static <T> R<T> fail(int code, String msg, String traceId) {
         R<T> r = new R<>();
         r.setCode(code);
         r.setMsg(msg);
         r.setTraceId(traceId);
         return r;
+    }
+
+    private static String currentTraceId() {
+        return UserContextHolder.getContext() == null ? null : UserContextHolder.getContext().getTraceId();
     }
 
     public int getCode() {

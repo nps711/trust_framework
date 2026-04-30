@@ -1,7 +1,6 @@
 package com.trust.common.web.exception;
 
 import com.trust.common.core.api.R;
-import com.trust.common.core.context.UserContextHolder;
 import com.trust.common.core.error.BusinessException;
 import com.trust.common.core.error.ErrorCode;
 import jakarta.servlet.http.HttpServletRequest;
@@ -18,21 +17,17 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(BusinessException.class)
     public R<Void> handleBusiness(BusinessException ex) {
-        return R.fail(ex.getCode(), ex.getMessage(), traceId());
+        return R.fail(ex.getCode(), ex.getMessage());
     }
 
     @ExceptionHandler({MethodArgumentNotValidException.class, BindException.class})
     public R<Void> handleValidation(Exception ex) {
-        return R.fail(ErrorCode.BAD_REQUEST.getCode(), "request validation failed", traceId());
+        return R.fail(ErrorCode.BAD_REQUEST.getCode(), "request validation failed");
     }
 
     @ExceptionHandler(Exception.class)
     public R<Void> handleUnknown(Exception ex, HttpServletRequest request) {
         log.error("Unhandled exception at {}", request.getRequestURI(), ex);
-        return R.fail(ErrorCode.SYSTEM_ERROR.getCode(), ErrorCode.SYSTEM_ERROR.getMsg(), traceId());
-    }
-
-    private String traceId() {
-        return UserContextHolder.getContext() == null ? null : UserContextHolder.getContext().getTraceId();
+        return R.fail(ErrorCode.SYSTEM_ERROR.getCode(), ErrorCode.SYSTEM_ERROR.getMsg());
     }
 }

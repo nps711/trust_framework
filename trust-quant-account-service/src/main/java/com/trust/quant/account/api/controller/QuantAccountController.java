@@ -27,6 +27,6 @@ public class QuantAccountController {
         AccountInfoRes res = new AccountInfoRes();
         res.setAccountId(req.getAccountId());
         res.setAvailableBalance("1000000.000000");
-        return R.success(res, traceId);
+        return R.success(res);
     }
 }

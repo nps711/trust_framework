@@ -9,7 +9,9 @@
       "Bash(curl *)",
       "Bash(netstat -ano)",
       "Bash(taskkill *)",
-      "Bash(cmd *)"
+      "Bash(cmd *)",
+      "mcp__ide__executeCode",
+      "Bash(awk '{print $5}')"
     ]
   }
 }

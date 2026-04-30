@@ -6,7 +6,6 @@ import com.trust.audit.api.response.AuditListRes;
 import com.trust.audit.api.response.AuditLogRes;
 import com.trust.audit.application.AuditApplicationService;
 import com.trust.common.core.api.R;
-import com.trust.common.core.context.UserContextHolder;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,15 +24,11 @@ public class AuditController {
 
     @PostMapping("/list")
     public R<AuditListRes> queryAuditList(@Valid @RequestBody AuditQueryReq req) {
-        return R.success(auditApplicationService.queryAuditList(req), traceId());
+        return R.success(auditApplicationService.queryAuditList(req));
     }
 
     @PostMapping("/detail")
     public R<AuditLogRes> queryAuditDetail(@Valid @RequestBody AuditDetailReq req) {
-        return R.success(auditApplicationService.queryAuditDetail(req), traceId());
-    }
-
-    private String traceId() {
-        return UserContextHolder.getContext() == null ? null : UserContextHolder.getContext().getTraceId();
+        return R.success(auditApplicationService.queryAuditDetail(req));
     }
 }

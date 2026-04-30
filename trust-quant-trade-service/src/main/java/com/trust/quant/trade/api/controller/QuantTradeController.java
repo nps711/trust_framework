@@ -35,42 +35,38 @@ public class QuantTradeController {
     @PostMapping("/order/place")
     @Operation(summary = "Place order")
     public R<OrderPlaceRes> place(@Valid @RequestBody OrderPlaceReq req) {
-        return R.success(applicationService.placeOrder(req), traceId());
+        return R.success(applicationService.placeOrder(req));
     }
 
     @PostMapping("/order/cancel")
     @Operation(summary = "Cancel order")
     public R<Boolean> cancel(@Valid @RequestBody OrderCancelReq req) {
-        return R.success(applicationService.cancelOrder(req), traceId());
+        return R.success(applicationService.cancelOrder(req));
     }
 
     @com.trust.common.security.annotation.DataScope(deptAlias = "dept_id")
     @PostMapping("/order/query")
     @Operation(summary = "Query orders")
     public R<List<Order>> queryOrder(@Valid @RequestBody OrderQueryReq req) {
-        return R.success(applicationService.queryOrders(req), traceId());
+        return R.success(applicationService.queryOrders(req));
     }
 
     @PostMapping("/trade/query")
     @Operation(summary = "Query trades")
     public R<List<Trade>> queryTrade(@Valid @RequestBody TradeQueryReq req) {
-        return R.success(applicationService.queryTrades(req), traceId());
+        return R.success(applicationService.queryTrades(req));
     }
 
     @PostMapping("/account/query")
     @Operation(summary = "Query account")
     public R<AccountSnapshot> queryAccount(@Valid @RequestBody AccountQueryReq req) {
-        return R.success(applicationService.queryAccount(req), traceId());
+        return R.success(applicationService.queryAccount(req));
     }
 
     @PostMapping("/account/query-remote")
     @Operation(summary = "Query account from quant-account-service")
     public R<AccountSnapshot> queryAccountRemote(@Valid @RequestBody AccountQueryReq req) {
-        String traceId = traceId();
-        return R.success(applicationService.queryRemoteAccount(req, traceId), traceId);
-    }
-
-    private String traceId() {
-        return UserContextHolder.getContext() == null ? null : UserContextHolder.getContext().getTraceId();
+        String traceId = UserContextHolder.getContext() == null ? null : UserContextHolder.getContext().getTraceId();
+        return R.success(applicationService.queryRemoteAccount(req, traceId));
     }
 }
