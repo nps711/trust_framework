@@ -12,7 +12,9 @@
       "Bash(cmd *)",
       "mcp__ide__executeCode",
       "Bash(awk '{print $5}')",
-      "Bash(mvn dependency:tree)"
+      "Bash(mvn dependency:tree)",
+      "Bash(mvn -pl trust-common-web -am compile)",
+      "Bash(mvn compile *)"
     ]
   }
 }
