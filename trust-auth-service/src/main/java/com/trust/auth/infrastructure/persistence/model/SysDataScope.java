@@ -1,13 +1,25 @@
 package com.trust.auth.infrastructure.persistence.model;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.time.LocalDateTime;
 
+@TableName("sys_data_scope")
 public class SysDataScope {
+
+    @TableId(type = IdType.INPUT)
     private Long id;
+
     private String scopeId;
     private String roleId;
     private String scopeType;
     private String deptIds;
+
+    @TableField(fill = FieldFill.INSERT)
     private LocalDateTime createTime;
 
     public Long getId() {

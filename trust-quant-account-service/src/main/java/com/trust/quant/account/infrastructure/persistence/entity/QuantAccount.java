@@ -1,4 +1,4 @@
-package com.trust.auth.infrastructure.persistence.model;
+package com.trust.quant.account.infrastructure.persistence.entity;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
@@ -6,19 +6,26 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@TableName("sys_user")
-public class SysUser {
+@TableName("quant_account")
+public class QuantAccount {
 
     @TableId(type = IdType.INPUT)
     private Long id;
 
-    private String userId;
-    private String username;
-    private String password;
-    private Long deptId;
+    private String accountId;
+
+    private String accountName;
+
+    private String accountType;
+
     private String status;
+
+    private BigDecimal availableBalance;
+
+    private BigDecimal frozenBalance;
 
     @TableField(fill = FieldFill.INSERT)
     private LocalDateTime createTime;
@@ -34,36 +41,28 @@ public class SysUser {
         this.id = id;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getAccountId() {
+        return accountId;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setAccountId(String accountId) {
+        this.accountId = accountId;
     }
 
-    public String getUsername() {
-        return username;
+    public String getAccountName() {
+        return accountName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setAccountName(String accountName) {
+        this.accountName = accountName;
     }
 
-    public String getPassword() {
-        return password;
+    public String getAccountType() {
+        return accountType;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Long getDeptId() {
-        return deptId;
-    }
-
-    public void setDeptId(Long deptId) {
-        this.deptId = deptId;
+    public void setAccountType(String accountType) {
+        this.accountType = accountType;
     }
 
     public String getStatus() {
@@ -72,6 +71,22 @@ public class SysUser {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public BigDecimal getAvailableBalance() {
+        return availableBalance;
+    }
+
+    public void setAvailableBalance(BigDecimal availableBalance) {
+        this.availableBalance = availableBalance;
+    }
+
+    public BigDecimal getFrozenBalance() {
+        return frozenBalance;
+    }
+
+    public void setFrozenBalance(BigDecimal frozenBalance) {
+        this.frozenBalance = frozenBalance;
     }
 
     public LocalDateTime getCreateTime() {

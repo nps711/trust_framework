@@ -1,9 +1,19 @@
 package com.trust.audit.infrastructure.persistence.model;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.time.LocalDateTime;
 
+@TableName("sys_audit_log")
 public class AuditLog {
+
+    @TableId(type = IdType.INPUT)
     private Long id;
+
     private String traceId;
     private String module;
     private String action;
@@ -14,6 +24,8 @@ public class AuditLog {
     private String status;
     private Long costMs;
     private String ip;
+
+    @TableField(fill = FieldFill.INSERT)
     private LocalDateTime createTime;
 
     public Long getId() {

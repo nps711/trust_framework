@@ -1,9 +1,19 @@
 package com.trust.file.infrastructure.persistence.model;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.time.LocalDateTime;
 
+@TableName("sys_file_record")
 public class FileRecord {
+
+    @TableId(type = IdType.INPUT)
     private Long id;
+
     private String fileId;
     private String fileName;
     private String originalName;
@@ -13,6 +23,8 @@ public class FileRecord {
     private String storagePath;
     private String url;
     private String createBy;
+
+    @TableField(fill = FieldFill.INSERT)
     private LocalDateTime createTime;
 
     public Long getId() {

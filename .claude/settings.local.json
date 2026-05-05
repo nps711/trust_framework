@@ -14,7 +14,8 @@
       "Bash(awk '{print $5}')",
       "Bash(mvn dependency:tree)",
       "Bash(mvn -pl trust-common-web -am compile)",
-      "Bash(mvn compile *)"
+      "Bash(mvn compile *)",
+      "Bash(mvn -q -DskipTests compile)"
     ]
   }
 }
