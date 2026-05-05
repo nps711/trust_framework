@@ -11,7 +11,8 @@
       "Bash(taskkill *)",
       "Bash(cmd *)",
       "mcp__ide__executeCode",
-      "Bash(awk '{print $5}')"
+      "Bash(awk '{print $5}')",
+      "Bash(mvn dependency:tree)"
     ]
   }
 }
